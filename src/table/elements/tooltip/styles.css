@@ -1,0 +1,8 @@
+.nspira__t-tooltip-container {
+    position: fixed;
+    background-color: black;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 4px;
+    opacity: 0.8;
+}

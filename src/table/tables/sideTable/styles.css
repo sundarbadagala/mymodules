@@ -1,0 +1,22 @@
+.nspira__t--sd-table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.nspira__t--sd-table,
+.nspira__t--sd-tbody-th,
+.nspira__t--sd-tbody-td {
+    border: 1px solid #dfe3e8;
+    padding: 8px;
+}
+
+.nspira__t--sd-tbody-th {
+    background-color: #f4f6f8;
+}
+
+.nspira__t--sd-table-td-arr {
+    background-color: #f9fafb;
+    vertical-align: baseline;
+}

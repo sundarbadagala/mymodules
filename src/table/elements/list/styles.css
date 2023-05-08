@@ -1,0 +1,19 @@
+.nspira__t-sd-td-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nspira__t-sd-td-list-item {
+    border: 1px solid #dfe3e8;
+    flex-grow: 1;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 8px;
+    background-color: #ffffff;
+    margin: -1px -1px 0 0;
+}

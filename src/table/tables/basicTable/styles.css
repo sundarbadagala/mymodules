@@ -1,0 +1,21 @@
+.nspira__t-bs-table {
+  border-collapse: collapse;
+  background-color: #ffffff;
+  width: 100%;
+  text-align: left;
+}
+
+.nspira__t-bs-table,
+.nspira__t-bs-thead-tr-th,
+.nspira__t-bs-tbody-tr-td {
+  border: 1px solid #dfe3e8;
+}
+
+.nspira__t-bs-thead-tr-th {
+  background-color: #f4f6f8;
+}
+
+.nspira__t-bs-thead-tr-th,
+.nspira__t-bs-tbody-tr-td {
+  padding: 8px;
+}

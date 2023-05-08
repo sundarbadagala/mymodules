@@ -1,0 +1,42 @@
+.nspira__t--ac-table-container{
+  width: 100%;
+  overflow: auto;
+}
+
+.nspira__t--ac-table {
+  border-collapse: collapse;
+  background-color: #ffffff;
+  width: 100%;
+  text-align: left;
+}
+
+.nspira__t--ac-table,
+.nspira__t--ac-thead-tr-th,
+.nspira__t--ac-tbody-tr-td {
+  border: 1px solid #dfe3e8;
+}
+
+.nspira__t--ac-thead-tr-th {
+  background-color: #f4f6f8;
+}
+
+.nspira__t--ac-thead-tr-th,
+.nspira__t--ac-tbody-tr-td {
+  padding: 8px;
+}
+
+.nspira__t--ac-collapse-btn{
+  background: none;
+  border:none;
+  outline: none;
+  border-radius: 50%;
+  width: 30px;
+    height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nspira__t--ac-collapse-btn:hover{
+  background-color: #dfe3e8;
+}
