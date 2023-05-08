@@ -1,0 +1,512 @@
+---
+description: A standard, accessible and customizable Select.
+labels: ['react-select', 'select','select-component', 'ui']
+---
+
+### Prerequiesites
+
+:::note
+Before Installing Select module, make sure to install `react-window` and `styled-components` libraries.
+:::
+
+```js
+npm i react-window@1.8.8
+```
+
+```js
+npm i styled-components@5.3.6
+```
+**or**
+
+```js
+npm i react-window@1.8.8 styled-components@5.3.6 
+```
+:::note
+No need to install `react-window` for Select module having version > 1.5.0
+:::
+
+
+### Install and Import Select
+
+(install the  `Select` module in your component:)
+```js
+npm i @nspiracbd/molecules.select
+```
+
+(import the  `Select` module in your component:)
+```js
+import Select from '@nspiracbd/molecules.select'
+```
+
+### Basic Single Select
+
+**In module the required properties are options, value and onChange:**
+- `options` is the property which helps to display the list of elements;
+- `value` is the property which helps to handle the selected option;
+- `onChange` is the function helps to return the selected value;
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (opt) => {
+    setOption(opt);
+  };
+  return (
+    <>
+      <Select options={data} value={option} onChange={handleChange} />
+    </>
+  );
+}
+
+export default App;
+
+const data = [
+  { id: 1, label: "Amby", value: "j1HPTu" },
+  { id: 2, label: "Klara", value: "sS5As4" },
+  { id: 3, label: "Lay", value: "RHuFGr" },
+  { id: 4, label: "Lyell", value: "V6ITSH" },
+  { id: 5, label: "Amerigo", value: "mpeuQO" },
+  { id: 6, label: "Ofella", value: "VTa9SY" },
+  { id: 7, label: "Gianna", value: "P17FmY" },
+  { id: 8, label: "Nestor", value: "sfvx9t" },
+  { id: 9, label: "Chalmers", value: "dJ0e9q" },
+  { id: 10, label: "Fredi", value: "jazsBk" },
+];
+
+
+```
+(For visual view please see the `Basic Single Select` in Compositions)
+
+### Single Select With Custom Placeholders
+
+Initially the select placehoder is "Select" and search placehoder is "Search...", but we can display our own placeholder, just by passing props `placeholder` and `searchPlaceholder` to Select module.
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (opt) => {
+    setOption(opt);
+  };
+  return (
+    <>
+      <Select
+        options={data}
+        value={option}
+        onChange={handleChange}
+        placeholder="Please Select"
+        searchPlaceholder="Please Search"
+      />
+    </>
+  );
+}
+
+export default App;
+```
+(For visual view please see the `Single Select With Custom Placeholder` in Compositions)
+
+### Single Select With Custom Label and value
+
+Every time changing the data into label and value objects format is little bit difficult. To avoid that we have to pass `label` and `keys` props
+- `label` is the property which helps to display the element which we want see;
+- `keys` is the property which acts as obtained value from selected option;
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (opt) => {
+    //opt is nothing but last_name from selected option
+    setOption(opt); 
+
+  };
+  return (
+    <>
+      <Select
+        options={data}
+        value={option}
+        onChange={handleChange}
+        label='first_name'
+        keys='last_name'
+      />
+    </>
+  );
+}
+export default App;
+
+const data= [
+    { id: 1, first_name: "Sada", last_name: "Truran", code: "jJ7e4F" },
+    { id: 2, first_name: "Norah", last_name: "Dayley", code: "AJYrgP" },
+    { id: 3, first_name: "Jeri", last_name: "Vasyutkin", code: "3OnIeT" },
+    { id: 4, first_name: "Barny", last_name: "Hartzog", code: "fdKkW9" },
+    { id: 5, first_name: "Greggory", last_name: "Pideon", code: "jc0dDC" },
+    { id: 6, first_name: "Cozmo", last_name: "Godfery", code: "gkciA4" },
+    { id: 7, first_name: "Klemens", last_name: "Czapla", code: "7QFSgc" },
+    { id: 8, first_name: "Micaela", last_name: "Bartles", code: "Z34y5u" },
+    { id: 9, first_name: "Graehme", last_name: "Beebis", code: "htR9jA" },
+    { id: 10, first_name: "Enrique", last_name: "Guiett", code: "7t3Xga" }
+]
+```
+(For visual view please see the `Single Select With Custom Label and Value` in Compositions)
+
+### Single Select With Custom Props
+
+We can pass some props to handle the select and search options based on user requirements
+- `searchProps` is the object helps to handle searching conditions i.e search with case sensitive, searched text trim and search a text from start only;
+- `headProps` is the object helps to handle the icons in select module i.e startIcon, arrow down icon (at the time when select options are not visible) and arrow up icon (at the time when select options are visible);
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (opt) => {
+    //opt is nothing but last_name from selected option
+    setOption(opt); 
+
+  };
+  return (
+    <>
+      <Select
+        options={data}
+        value={option}
+        onChange={handleChange}
+        label='first_name'
+        keys='last_name'
+        searchProps={{
+          isSearchEnable:false      //default value true
+          isCaseSensitive: true,    //default value is false
+          isTrim: true,             //default value is true
+          isMatchFromStart: true,   //default value is false
+        }}
+        headProps={{
+          startIcon: <i className="fa-sharp fa-solid fa-check"></i>,
+          downIcon: <i className="fa-sharp fa-solid fa-circle-down"></i>,
+          upIcon: <i className="fa-sharp fa-solid fa-circle-up"></i>,
+          isChips:true,                 //default value is false
+          chipType: 'square',           //default value is 'pill'
+          chipCloseIcon:<i className="fa-solid fa-user" style={{color:"white"}}></i>
+          isDisplayAll:true,            //default value is false
+          isClearable:true,             //default value is false
+        }}
+        bodyProps={{
+          isOptionScrollable:true,      //default value is false
+          isTooltipEnable:true          //default value is true if isOptionScrollable is false, otherwise it is false
+          tooltipPositions:{
+            x: 100,                     //default value 0
+            y: -100                     //default value 0
+          }
+        }}
+      />
+    </>
+  );
+}
+export default App;
+```
+(For visual view please see the `Single Select With Custom Props` in Compositions)
+
+### Single Select With Custom Label
+
+Custom label is the concept helps to handle labels of select completely by developer.
+- `customLabel` is the function which returns jsx component;
+- `customLabel` function contains three arguments, `item`, `callback`, `style`.
+- `item` is particular object from options which we want to display.
+- `callback` is function, it helps to pass item as argument into Select module to access that particular object.
+- `style` is object containing stylings, helps to render the options without any UI bugs.
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (opt) => {
+    //opt is nothing but last_name from selected option
+    setOption(opt); 
+  };
+  const customLabel = (item, callback, style) => {   // no need to add style param from  version > 1.5.0; 
+    return (
+      <div
+        style={{
+          ...style, // no need to add style from version > 1.5.0
+          height: "40px",
+          backgroundColor: `${item.isHighlight ? "#c0d481" : "#e7fc9f"}`,
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+        }}
+        onClick={() => callback(item)}
+      >
+        <i className="fa-solid fa-star" style={{ marginRight: "10px" }}></i>{" "}
+        {item.first_name} {item.last_name}
+      </div>
+    );
+  };
+  return (
+    <>
+      <Select
+        options={data}
+        value={option}
+        onChange={handleChange}
+        keys='last_name'
+        searchProps={{
+          isCaseSensitive: true,    //default value is false
+          isTrim: true,             //default value is true
+          isMatchFromStart: true,   //default value is false
+        }}
+        headProps={{
+          startIcon: <i className="fa-sharp fa-solid fa-check"></i>,
+          downIcon: <i className="fa-sharp fa-solid fa-circle-down"></i>,
+          upIcon: <i className="fa-sharp fa-solid fa-circle-up"></i>,
+        }}
+        customLabel={customLabel}
+      />
+    </>
+  );
+}
+export default App;
+```
+(For visual view please see the `Single Select With Custom Label` in Compositions)
+
+### Single Select With Custom stylings
+By passing styles property as an object to Select module, we can achieve the styling needs based on users requirement. Styles property contains 4 internal styling props. Those are searchStyles, headStyles, bodyStyles, labelStyles.
+- `searchStyles` is an object contains stylings of search field in Select;
+- `headStyles` is an object contains stylings of Select head part.
+- `bodyStyles` is an object contains stylings of Options container.
+- `labelStyles` is an object contains stylings of every idividual label in Select.
+
+:::note
+Every labelStyles having 3 stages of stylings i.e default state styles, selected state styles and hover state styles. To avoid code complexity, we can pass every individual styling in array format followed by [defaultStyle, selectedStyle, hoverStyle].
+- If we pass 3 arguments, it acts as [defaultStyle, selectedStyle, hoverStyle]
+- If we pass 2 arguments, it acts as [defaultStyle, selectedStyle & hoverStyle]
+- If we pass 1 arguments, it acts as [defaultStyle & selectedStyle & hoverStyle]
+- If we pass string, it acts as same style for all three stages i.e default stage, selected stage, hover stage
+:::
+
+``` jsx
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [option, setOption] = useState("");
+  const handleChange = (val) => {
+    setOption(val);
+  };
+  return (
+    <>
+      <Select
+        options={data}
+        value={option}
+        onChange={handleChange}
+        label='first_name'
+        keys='last_name'
+        styles={{
+          searchStyles: {
+            height: "30px",
+            fontWeight: "bold",
+            backgroundColor: "#faddca",
+          },
+          headStyles: {
+            border: "2px solid #fa9657",
+            backgroundColor: "#faddca",
+            height: "30px",
+          },
+          bodyStyles: {
+            borderRadius: "10px",
+            boxShadow: "3px 3px 3px #cecece",
+          },
+          chipStyles: {
+              container: {
+                border:'1px solid red'
+              },
+              title: {
+                backgroundColor:'#cecece'
+              },
+              close: {
+                backgroundColor:"orange"
+              },
+            },
+          labelStyles: {
+            backgroundColor: ["#faddca", "#fa9657", "#faa875"], //[defaultState, selectedState, hoverState]
+            color: ["#000000", "#000000"],                      //[defaultState, selectedState & hoverState]
+            height: "30px",                                     // defaultState & selectedState & hoverState
+          },
+        }}
+      />
+    </>
+  );
+};
+
+``` 
+(For visual view please see the `Single Select With Custom Styles` in Compositions)
+
+### Basic Multi Select
+
+Simple we need to pass `isMulti` as a prop to Select module to act as multi select
+
+``` jsx
+
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App() {
+  const [opts, setOpts] = useState([]);
+  const handleChange = (ops) => {
+    setOpts(ops);
+  };
+  return (
+    <>
+      <Select 
+        isMulti
+        options={data} 
+        value={opts} 
+        onChange={handleChange} 
+      />
+    </>
+  );
+}
+
+export default App;
+
+const data = [
+  { id: 1, label: "Amby", value: "j1HPTu" },
+  { id: 2, label: "Klara", value: "sS5As4" },
+  { id: 3, label: "Lay", value: "RHuFGr" },
+  { id: 4, label: "Lyell", value: "V6ITSH" },
+  { id: 5, label: "Amerigo", value: "mpeuQO" },
+  { id: 6, label: "Ofella", value: "VTa9SY" },
+  { id: 7, label: "Gianna", value: "P17FmY" },
+  { id: 8, label: "Nestor", value: "sfvx9t" },
+  { id: 9, label: "Chalmers", value: "dJ0e9q" },
+  { id: 10, label: "Fredi", value: "jazsBk" },
+];
+
+
+```
+### Multi Select Properties
+ - All multi select properties are same as single select properties.
+ - But we need pass extra checkbox properties to multi select, Those are `checkBoxProps`, `checkBoxStyles`
+ - `checkBoxProps` is object which contain type of checkbox i.e mark, square, circle and default type is mark
+ - `checkBoxStyles` is object which is sub prop of `styles` property and contains stylings of checkbox in multi select
+ - `checkBoxStyles` contains the array of styles same as mentioned in `labelsStyles`, but we need to pass two stages only [defaultState, select & hoverState ]
+
+``` jsx
+
+import React, { useState } from "react";
+import Select from "@myreact/modules.select";
+
+function App(){
+  const [opts, setOpts] = useState([]);
+  const handleChange = (ops) => {
+    setOpts(ops);
+  };
+  return (
+    <div style={{ width: "200px" }}>
+      <Select
+        isMulti
+        options={data}
+        value={opts}
+        onChange={handleChange}
+        label="first_name"
+        keys="last_name"
+        searchProps={{
+          isCaseSensitive: true,
+          isTrim: true,
+          isMatchFromStart: true,
+        }}
+        headProps={{
+          startIcon: <i className="fa-sharp fa-solid fa-check"></i>,
+          downIcon: <i className="fa-sharp fa-solid fa-circle-down"></i>,
+          upIcon: <i className="fa-sharp fa-solid fa-circle-up"></i>,
+        }}
+        checkBoxProps={{
+          type: "circle", //square, circle, mark & default type is  mark
+        }}
+        styles={{
+          searchStyles: {
+            height: "30px",
+            fontWeight: "bold",
+          },
+          headStyles: {
+            border: "2px solid green",
+            backgroundColor: "#f9fcde",
+            height: "30px",
+          },
+          bodyStyles: {
+            boxShadow: "3px 3px 3px black",
+          },
+          labelStyles: {
+            backgroundColor: ["#f9fcde", "#ecfa82", "#f3fabe"],
+            color: ["#000000", "#000000", "#000000"],
+            height: "40px",
+          },
+          checkBoxStyles: {
+            border: ["2px solid green", "2px solid green"],
+            width: "15px",
+            height: "15px",
+            backgroundColor: ["#f9fcde", "green"],
+            color: "#ffffff",
+          },
+        }}
+      />
+    </div>
+  );
+}
+```
+
+### Manipulate Stylings By Using Class Names
+
+- We can change the styles of Select by accessing their classNames.
+- The all classNames are starting with nspira i.e `nspira__single-select--body`, `nspira__multi-select-label` etc...
+- For better idea inspect the web page.
+
+
+
+### Properties
+
+| NAME | REQUIRED | TYPE | DEFAULT | SUB PROPS | DESCRIPTIONS |  
+| ------ | ------ | ---- | ------- | -------- | ------------ |
+| options | required| array of objects | [ ] | - | Display data as options |
+| value `single select` | required | string | " " | - | Display selected option|
+| value `multi select` | required | array | [] | - | Display selected option|
+| onChange | required| function | - | - | Set selected option to state |
+| placehoder | optional | string | Select | - | Select Field placehoder |
+| searchPlacehoder | optional | string | Search... | - | Search Field placehoder |
+| label | optional | string | label | - | A key of object to display as options |
+| keys | optional | string | value | - | A obtained key from object while select|
+| searchProps | optional | object | - | `isCaseSensitive`, `isTrim`, `isMatchFromStart` | Styles container |
+| isSearchEnable `sub prop` | optional | boolean | true | - | Wether searching is enable or not |
+| isCaseSensitive `sub prop` | optional | boolean | false | - | Wether searching should be case sensitive or not |
+| isTrim `sub prop` | optional | boolean | true | - | Trims the entered text while searching |
+| isMatchFromStart `sub prop` | optional | boolean | false | - | Search match only if it starts with entered text |
+| headProps | optional | object | - | `startIcon`, `downIcon`, `upIcon`, `isClearable`, `isChips`, `isDisplayAll`, `chipType` | To handle the select icons manually |
+| startIcon `sub prop` | optional | icon/image | - | - | Display at starting of Select |
+| downIcon `sub prop` | optional | icon/image | - | - | Display instaed of Select down arrow icon |
+| upIcon `sub prop` | optional | icon/image | - | - | Display instaed of Select up arrow icon |
+| isClearable `sub prop` | optional | boolean | false | - | Add clear Icon, helps to clear data |
+| isChips `sub prop` | optional | boolean | false | - | Display options in chips format |
+| isDisplayAll `sub prop` | optional | boolean | false | - | Display all the options instead of one option not as mentioned as default styles |
+| chipType `sub prop` | optional | 'pill'/'square' | 'pill' | - | Style of Chip |
+| checkBoxProps | optional | object | - | type | Styling of check box |
+| type `sub prop` | optional | square/circle/mark | mark | - | Styling of check box |
+| bodyProps | optional | object | - | `isOptionScrollable`, `isTooltipEnable`, `tooltipPositions` | To handle Select body props manually |
+| isOptionScrollable `sub prop` | optional | boolean | false | - | The option can be scrollable in x direction without ellipse to show complete value |
+| isTooltipEnable `sub prop` | optional | boolean | true (isOptionScrollable is false ) | - | The option can have tooltip |
+| tooltipPositions `sub prop` | optional | {x:number, y:number} | {x:0, y:0} | - | Manually adjust the options tooltip positions (either positive or negative values) |
+| customLabel | optional | jsx function | - | - | To customize label |
+| styles | optional | object | - | `searchStyles`, `headStyles`, `bodyStyles`, `labelsStyles`, `checkBoxStyles` | To customize styles |
+| searchStyles `sub prop` | optional | styles object | - | - | Styling search part of Select |
+| headStyles `sub prop` | optional | styles object | - | - | Styling head part of Select |
+| bodyStyles `sub prop` | optional | styles object | - | - | Styling body part of Select |
+| labelStyles `sub prop` | optional | styles object | - | - | Styling label part of Select |
+| checkBoxStyles `sub prop` | optional | styles object | - | - | Styling check box part of Select |
+| chipStyles `sub prop` | optional | styles object | - | - | contains container, title, close objects and having each individual styles|
+

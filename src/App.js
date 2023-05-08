@@ -1,7 +1,10 @@
+import {BasicSingleSelect, BasicMultiSelect} from './select/select.composition'
+
 function App() {
   return (
     <>
-      hello
+      <BasicSingleSelect/>
+      <BasicMultiSelect/>
     </>
   );
 }
